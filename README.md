@@ -4,10 +4,6 @@
 
 An Ansible Role that installs [Rkt](https://coreos.com/rkt/docs/latest/) on Linux.
 
-## Requirements
-
-Requires Docker; recommended role for Docker installation: `elyesbenamor.docker`.
-
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
@@ -21,6 +17,10 @@ Apt repository options for Rkt installation.
     Rkt_Package:
       - https://github.com/coreos/rkt/releases/download/v{{ rkt_version }}/rkt-v{{ rkt_version }}.tar.gz
    dest=/tmp/rkt.zip
+
+## Useful links
+
+Use try [rkt with kubernetes](https://coreos.com/rkt/docs/latest/using-rkt-with-kubernetes.html) to see how to integrate the rkt runtime on your cluster.
 
 ## Dependencies
 
