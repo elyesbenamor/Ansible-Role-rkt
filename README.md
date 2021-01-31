@@ -1,6 +1,6 @@
 
 # Ansible Role: rkt
-
+hetha update remotly
 [![CI](https://github.com/geerlingguy/ansible-role-kubernetes/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-kubernetes/actions?query=workflow%3ACI)
 
 An Ansible Role that installs [Rkt](https://coreos.com/rkt/docs/latest/) on Linux.
