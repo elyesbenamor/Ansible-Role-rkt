@@ -1,7 +1,7 @@
 ---
 - name: Download Rkt
   get_url: >
-   url=https://github.com/coreos/rkt/releases/download/v{{ rkt_version }}/rkt-v{{ rkt_version }}.tar.gz
+   url=https://github.com/coreos/rkt/releases/download/v{{ rkt.debian_version }}/rkt-v{{ rkt.debian_version }}.tar.gz
    dest=/tmp/rkt.zip
 
 - name: Extract Rkt
@@ -12,3 +12,6 @@
    owner={{ ansible_ssh_user }}
   become: yes
  
+- name: install rkt
+  yum:
+    name: https://github.com/rkt/rkt/releases/download/{{rkt.rpm_version}}/{{rkt.rpm}}
