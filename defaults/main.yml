@@ -1,2 +1,5 @@
 ---
-rkt_version: "1.9.0"
+rkt:
+  debian_version: "1.9.0"
+  rpm_version: v1.29.0
+  rpm: rkt-1.29.0-1.x86_64.rpm
