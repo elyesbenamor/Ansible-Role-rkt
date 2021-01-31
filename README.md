@@ -16,6 +16,8 @@ Role Variables
 | Variable's name | Description | Example |
 | --------------- | ----------- | ------- |
 | rkt_version  | version of Rkt that you want install. Default's 1.9.0  | 1.9.0  |
+|image_path|http://www.example.com/cool-thing.aci|he path to the ACI |
+|service_name|rkt-run |the name of the service|
 
 Example 
 ----------------
