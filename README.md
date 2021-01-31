@@ -15,7 +15,6 @@ Role Variables
 
 | Variable's name | Description | Example |
 | --------------- | ----------- | ------- |
-
 | rkt.debian_version  | version of Rkt that you want install. Default's 1.9.0  | 1.9.0  |
 |rkt.rpm| version of rpm is 1.29|rkt-1.29.0-1.x86_64.rpm|
 |image_path|http://www.example.com/cool-thing.aci|he path to the ACI |
