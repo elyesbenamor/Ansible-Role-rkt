@@ -1,0 +1,45 @@
+---
+- name: Ensure dependencies are installed
+  package:
+    name: iptables
+    state: present
+
+- name: Get rkt release from Github
+  shell: "curl -L https://github.com/coreos/rkt/releases/download/v{{ rkt_version }}/rkt-v{{ rkt_version}}.tar.gz | tar zxv"
+
+- name: Stat rkt
+  stat: 
+    path: "rkt-v{{ rkt_version }}/rkt"
+  register: foo_stat
+
+- name: Install the rkt binary
+  command: "mv rkt-v{{ rkt_version }}/rkt /usr/bin/rkt"
+  when: foo_stat.stat.exists
+
+- name: Set permissions on rkt binary
+  file: 
+    dest: /usr/bin/rkt
+    owner: root
+    group: root
+    mode: 0755
+    state: file
+
+- name: Install systemd files
+  shell: "cp rkt-v{{ rkt_version }}/init/systemd/tmpfiles.d/rkt.conf /usr/lib/tmpfiles.d/"
+
+- name: Install systemd files
+  shell: "cp rkt-v{{ rkt_version }}/init/systemd/rkt-metadata.* /usr/lib/systemd/system/"
+
+# Not until rkt 1.2.x, hopefully
+#cp rkt-v{{ rkt_version }}/init/systemd/rkt-gc.* /usr/lib/systemd/system/
+
+- name: Run the rkt setup data dir script
+  command: "rkt-v{{ rkt_version }}/scripts/setup-data-dir.sh"
+
+- name: Setup directory structure for rkt stage1 images
+  command: "mkdir -p /usr/lib/rkt/stage1-images"
+
+- name: Copy over the aci files
+  shell: "cp rkt-v{{ rkt_version }}/*.aci /usr/lib/rkt/stage1-images/"
+
+- meta: flush_handlers

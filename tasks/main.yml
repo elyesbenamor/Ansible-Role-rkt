@@ -11,7 +11,10 @@
    copy=no
    owner={{ ansible_ssh_user }}
   become: yes
- 
+  
+- name: Detected RedHat based system
+  include: setup-RedHat.yml
+  when: ansible_os_family == "RedHat"
 - name: install rkt
   yum:
     name: https://github.com/rkt/rkt/releases/download/{{rkt.rpm_version}}/{{rkt.rpm}}
