@@ -5,4 +5,4 @@ rkt:
   rpm: rkt-1.29.0-1.x86_64.rpm
 image_path: http://www.example.com/cool-thing.aci
 service_name: rkt-run
-rkt_version: 1.15.0
+rkt_version: 1.20.0
