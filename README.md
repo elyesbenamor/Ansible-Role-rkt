@@ -1,46 +1,49 @@
+
 # Ansible Role: rkt
 
 [![CI](https://github.com/geerlingguy/ansible-role-kubernetes/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-kubernetes/actions?query=workflow%3ACI)
 
 An Ansible Role that installs [Rkt](https://coreos.com/rkt/docs/latest/) on Linux.
 
-## Role Variables
+Rkt Install
+=========
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Usage for install and start the Rkt container runtime in linux.
 
-    Ansible_User:
-      ansible_ssh_user: ubuntu
+Role Variables
+--------------
+
+| Variable's name | Description | Example |
+| --------------- | ----------- | ------- |
+| rkt_version  | version of Rkt that you want install. Default's 1.9.0  | 1.9.0  |
+
+Example 
+----------------
+
+Install from Galaxy:
+
+	$ ansible-galaxy install elyesbenamor.ansible_role_rkt
+
+Playbook (for default variables):
+
+    - hosts: all
+      roles: 
+      	- elyesbenamor.ansible_role_rkt
+
+Playbook (for specific variables):
+
+    - hosts: all
+      roles:
+      	- { role: elyesbenamor.ansible_role_rkt, rkt_version: 1.9.0 }
 
 
-Apt repository options for Rkt installation.
-
-    Rkt_Package:
-      - https://github.com/coreos/rkt/releases/download/v{{ rkt_version }}/rkt-v{{ rkt_version }}.tar.gz
-   dest=/tmp/rkt.zip
+Then, log into the master, and run `rkt version` as ubuntu non root user, and you should see the version of your runtime rkt.
 
 ## Useful links
 
 Use try [rkt with kubernetes](https://coreos.com/rkt/docs/latest/using-rkt-with-kubernetes.html) to see how to integrate the rkt runtime on your cluster.
 
-## Dependencies
+License
+-------
 
-None.
-
-## Example Playbooks
-
-Playbook:
-
-```yaml
-- hosts: all
-
-
-  roles:
-    - elyesbenamor.ansible_role_rkt
-```
-
-Then, log into the master, and run `rkt version` as ubuntu non root user, and you should see the version of your runtime rkt.
-
-## License
-
-MIT / BSD
-
+MIT
